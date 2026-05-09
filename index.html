@@ -238,6 +238,48 @@ ul { list-style: none; }
   content: '◆'; color: #c9a96e; font-size: 8px;
 }
 
+/* ========== Team ========== */
+.team-section { background: #fff; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; max-width: 1300px; margin: 0 auto; }
+.team-card {
+  background: #f8f9fb; border-radius: 20px; padding: 40px 28px 32px;
+  text-align: center; transition: all 0.4s ease;
+  opacity: 0; transform: translateY(30px);
+  position: relative; overflow: hidden;
+}
+.team-card.visible { opacity: 1; transform: translateY(0); }
+.team-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 4px; background: linear-gradient(90deg, #c9a96e, #e0c68c, #c9a96e);
+  transform: scaleX(0); transition: transform 0.4s;
+}
+.team-card:hover { transform: translateY(-10px); box-shadow: 0 20px 50px rgba(10,22,40,0.10); }
+.team-card:hover::before { transform: scaleX(1); }
+.team-avatar {
+  width: 90px; height: 90px; margin: 0 auto 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0a1628, #1a2744);
+  border: 3px solid #c9a96e;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; color: #c9a96e; font-weight: 700;
+  transition: transform 0.3s;
+}
+.team-card:hover .team-avatar { transform: scale(1.08); }
+.team-name { font-size: 20px; font-weight: 700; color: #0a1628; margin-bottom: 4px; }
+.team-role { font-size: 13px; color: #c9a96e; font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; }
+.team-edu {
+  font-size: 13px; color: #888; margin-bottom: 14px; line-height: 1.8;
+}
+.team-edu span { display: block; }
+.team-desc {
+  font-size: 14px; color: #555; line-height: 1.8;
+  position: relative; padding-top: 14px;
+}
+.team-desc::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 30px; height: 2px; background: #e0c68c; border-radius: 1px;
+}
+
 /* ========== Stats Counter ========== */
 .stats-section {
   background: linear-gradient(135deg, #0a1628, #152a4a);
@@ -352,6 +394,7 @@ ul { list-style: none; }
 /* ========== Mobile Nav ========== */
 @media (max-width: 1200px) {
   .business-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 1024px) {
   .news-grid { grid-template-columns: repeat(2, 1fr); }
@@ -381,7 +424,7 @@ ul { list-style: none; }
   .timeline-item { flex-direction: row; align-items: flex-start; gap: 20px; }
   .timeline-dot { flex-shrink: 0; width: 40px; height: 40px; font-size: 14px; margin-bottom: 0; }
   .timeline-content { text-align: left; padding: 20px; }
-  .business-grid, .news-grid { grid-template-columns: 1fr; }
+  .business-grid, .news-grid, .team-grid { grid-template-columns: 1fr; }
   .careers-grid { grid-template-columns: 1fr; }
   .stats-section { padding: 60px 24px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
@@ -410,6 +453,7 @@ ul { list-style: none; }
     <li><a href="#home" onclick="closeNav()">首页</a></li>
     <li><a href="#timeline" onclick="closeNav()">公司历程</a></li>
     <li><a href="#business" onclick="closeNav()">业务介绍</a></li>
+    <li><a href="#team" onclick="closeNav()">创始人团队</a></li>
     <li><a href="#news" onclick="closeNav()">公司新闻</a></li>
     <li><a href="#careers" onclick="closeNav()">人才招聘</a></li>
   </ul>
@@ -556,6 +600,58 @@ ul { list-style: none; }
         <li>AI 智能投研系统</li>
         <li>定制化研究咨询服务</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== Team ==================== -->
+<section class="section team-section" id="team">
+  <div class="section-header">
+    <div class="tag">核心力量</div>
+    <h2>创始人团队</h2>
+    <div class="divider"></div>
+    <p>四位联合创始人，多元背景凝聚共识，共同引领公司发展</p>
+  </div>
+  <div class="team-grid">
+    <div class="team-card" data-animate>
+      <div class="team-avatar">🐏</div>
+      <div class="team-name">鎏蚝羊</div>
+      <div class="team-role">董事长 & CEO</div>
+      <div class="team-edu">
+        <span>西南财经大学 金融学士</span>
+        <span>西南财经大学 金融硕士</span>
+      </div>
+      <div class="team-desc">公司核心创立者，拥有三年公司管理经验，王楚钦真爱粉。</div>
+    </div>
+    <div class="team-card" data-animate>
+      <div class="team-avatar">🚢</div>
+      <div class="team-name">淫啧船</div>
+      <div class="team-role">投资银行部总经理 & 财富管理部总经理</div>
+      <div class="team-edu">
+        <span>西南财经大学 金融学士</span>
+        <span>香港大学 金融硕士</span>
+      </div>
+      <div class="team-desc">公司核心创立者，多年价值投资实战经验，深耕投行业务和财富管理业务，伊利股份和中芯国际最严厉的父亲。</div>
+    </div>
+    <div class="team-card" data-animate>
+      <div class="team-avatar">⚽</div>
+      <div class="team-name">噗十</div>
+      <div class="team-role">研究所首席经济学家</div>
+      <div class="team-edu">
+        <span>西南财经大学 经济学学士</span>
+        <span>香港大学 经济学硕士</span>
+      </div>
+      <div class="team-desc">实况足球骨灰级玩家，深耕卖方研究业务，对光伏行业有独到见解（见底）。</div>
+    </div>
+    <div class="team-card" data-animate>
+      <div class="team-avatar">🦅</div>
+      <div class="team-name">Eason</div>
+      <div class="team-role">ChatSmart基金 CEO</div>
+      <div class="team-edu">
+        <span>西南财经大学 金融学士</span>
+        <span>香港大学 财富管理硕士</span>
+      </div>
+      <div class="team-desc">累计超一年二级买方工作经验，曾任博时产品经理，学士台豪华套间拥有者，港大最牢的男人。</div>
     </div>
   </div>
 </section>
