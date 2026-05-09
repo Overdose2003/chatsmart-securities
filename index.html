@@ -163,42 +163,45 @@ ul { list-style: none; }
 
 /* ========== Timeline ========== */
 .timeline-section { background: #fff; }
-.timeline { position: relative; max-width: 1000px; margin: 0 auto; }
+.timeline {
+  position: relative; max-width: 1200px; margin: 0 auto;
+  display: flex; justify-content: space-between; gap: 0;
+  padding: 60px 0 40px;
+}
 .timeline::before {
-  content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
-  width: 2px; background: linear-gradient(to bottom, transparent, #c9a96e 5%, #c9a96e 95%, transparent);
-  transform: translateX(-50%);
+  content: ''; position: absolute; top: 36px; left: 10%; right: 10%;
+  height: 3px;
+  background: linear-gradient(90deg, #c9a96e, #e0c68c, #c9a96e);
 }
 .timeline-item {
-  display: flex; align-items: flex-start; margin-bottom: 60px;
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; align-items: center;
+  position: relative;
   opacity: 0; transform: translateY(30px); transition: all 0.6s ease;
 }
 .timeline-item.visible { opacity: 1; transform: translateY(0); }
-.timeline-item:nth-child(odd) { flex-direction: row; }
-.timeline-item:nth-child(even) { flex-direction: row-reverse; }
 .timeline-dot {
-  position: absolute; left: 50%; transform: translateX(-50%);
-  width: 48px; height: 48px;
+  width: 48px; height: 48px; flex-shrink: 0;
   background: linear-gradient(135deg, #0a1628, #1a2744);
   border: 3px solid #c9a96e; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   color: #c9a96e; font-weight: 700; font-size: 16px; z-index: 2;
+  margin-bottom: 24px;
 }
 .timeline-content {
-  width: 42%; padding: 32px;
+  text-align: center; padding: 28px 16px;
   background: #f8f9fb; border-radius: 16px;
-  border-left: 3px solid #c9a96e;
+  border-top: 3px solid #c9a96e;
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
 }
-.timeline-content:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-.timeline-item:nth-child(odd) .timeline-content { margin-left: 8%; }
-.timeline-item:nth-child(even) .timeline-content { margin-right: 8%; border-left: none; border-right: 3px solid #c9a96e; }
+.timeline-content:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
 .timeline-year {
-  font-size: 24px; font-weight: 800; color: #c9a96e;
+  font-size: 22px; font-weight: 800; color: #c9a96e;
   font-family: 'Georgia', serif; margin-bottom: 8px;
 }
-.timeline-title { font-size: 20px; font-weight: 700; color: #0a1628; margin-bottom: 10px; }
-.timeline-desc { font-size: 15px; color: #666; line-height: 1.8; }
+.timeline-title { font-size: 18px; font-weight: 700; color: #0a1628; margin-bottom: 10px; }
+.timeline-desc { font-size: 14px; color: #666; line-height: 1.8; }
 
 /* ========== Business ========== */
 .business-section { background: #f8f9fb; }
@@ -351,6 +354,9 @@ ul { list-style: none; }
   .business-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .timeline { overflow-x: auto; gap: 24px; justify-content: flex-start; }
+  .timeline-item { flex: 0 0 200px; }
+  .timeline::before { left: 24px; right: 24px; }
 }
 @media (max-width: 768px) {
   .navbar { padding: 0 24px; }
@@ -367,12 +373,11 @@ ul { list-style: none; }
   .hero-stat .num { font-size: 32px; }
   .section { padding: 80px 24px; }
   .section-header h2 { font-size: 30px; }
-  .timeline::before { left: 20px; }
-  .timeline-dot { left: 20px; width: 36px; height: 36px; font-size: 13px; }
-  .timeline-item, .timeline-item:nth-child(odd), .timeline-item:nth-child(even) {
-    flex-direction: row;
-  }
-  .timeline-content { width: calc(100% - 56px); margin-left: 56px !important; margin-right: 0 !important; border-left: 3px solid #c9a96e !important; border-right: none !important; }
+  .timeline { flex-direction: column; gap: 40px; padding: 40px 0; }
+  .timeline::before { display: none; }
+  .timeline-item { flex-direction: row; align-items: flex-start; gap: 20px; }
+  .timeline-dot { flex-shrink: 0; width: 40px; height: 40px; font-size: 14px; margin-bottom: 0; }
+  .timeline-content { text-align: left; padding: 20px; }
   .business-grid, .news-grid { grid-template-columns: 1fr; }
   .careers-grid { grid-template-columns: 1fr; }
   .stats-section { padding: 60px 24px; }
@@ -452,49 +457,41 @@ ul { list-style: none; }
     <div class="timeline-item" data-animate>
       <div class="timeline-dot">1</div>
       <div class="timeline-content">
-        <div class="timeline-year">2010</div>
+        <div class="timeline-year">2023.05</div>
         <div class="timeline-title">公司成立</div>
-        <div class="timeline-desc">ChatSmart证券在上海正式成立，获得中国证监会颁发的证券业务经营许可证，以投资银行业务为起点，开启服务中国资本市场的征程。</div>
+        <div class="timeline-desc">公司于四川省成都市温江区西南财经大学柳林校区诚园和松园成立，公司名源自创始人团队对辅导员行为的调侃，以淫啧船先生开创投资银行业务为起点，开启服务中国资本市场的征程。</div>
       </div>
     </div>
     <div class="timeline-item" data-animate>
       <div class="timeline-dot">2</div>
       <div class="timeline-content">
-        <div class="timeline-year">2013</div>
-        <div class="timeline-title">财富管理启航</div>
-        <div class="timeline-desc">正式成立财富管理事业部，推出"智富"系列理财产品，管理资产规模突破100亿元，服务高净值客户超过500位。</div>
+        <div class="timeline-year">2023.09</div>
+        <div class="timeline-title">合并办公</div>
+        <div class="timeline-desc">公司注册地变更为西南财经大学刘诗白书院，团队办公场所合并。</div>
       </div>
     </div>
     <div class="timeline-item" data-animate>
       <div class="timeline-dot">3</div>
       <div class="timeline-content">
-        <div class="timeline-year">2016</div>
-        <div class="timeline-title">研究所成立</div>
-        <div class="timeline-desc">成立ChatSmart研究院，汇聚来自全球顶尖机构的分析师团队，覆盖TMT、消费、医药、新能源等八大核心赛道，研究实力跻身行业前十。</div>
+        <div class="timeline-year">2024.03</div>
+        <div class="timeline-title">财富管理启航</div>
+        <div class="timeline-desc">正式成立财富管理部门，推出"尹利"等理财产品，服务众多高净值客户。</div>
       </div>
     </div>
     <div class="timeline-item" data-animate>
       <div class="timeline-dot">4</div>
       <div class="timeline-content">
-        <div class="timeline-year">2019</div>
-        <div class="timeline-title">全国布局</div>
-        <div class="timeline-desc">完成全国化战略布局，在北京、深圳、广州、成都、杭州设立分公司，员工总数突破2000人，服务网络覆盖全国主要经济区域。</div>
+        <div class="timeline-year">2024.10</div>
+        <div class="timeline-title">研究所成立</div>
+        <div class="timeline-desc">噗十先生成立ChatSmart证券研究所，汇聚顶尖分析师团队，覆盖光伏、TMT、消费、汽车、总量研究、固定收益、新能源、商业航天等热门/核心赛道，研究实力得到显著提升。</div>
       </div>
     </div>
     <div class="timeline-item" data-animate>
       <div class="timeline-dot">5</div>
       <div class="timeline-content">
-        <div class="timeline-year">2022</div>
-        <div class="timeline-title">科技赋能</div>
-        <div class="timeline-desc">全面升级数字化平台，推出AI智能投研系统"ChatSmart Alpha"，将人工智能与专业研究深度融合，为客户提供更精准的投资决策支持。</div>
-      </div>
-    </div>
-    <div class="timeline-item" data-animate>
-      <div class="timeline-dot">6</div>
-      <div class="timeline-content">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-title">迈向国际</div>
-        <div class="timeline-desc">获得香港证监会牌照，设立香港国际总部，管理资产规模突破800亿元，开启国际化发展新篇章。</div>
+        <div class="timeline-year">2025.09</div>
+        <div class="timeline-title">出海业务</div>
+        <div class="timeline-desc">公司成功登陆香港，设立香港国际分部。Eason先生依靠香港大学等优质资源积极拓展二级市场买方业务，成立全资子公司ChatSmart基金，投研实力强劲，产品表现出色。</div>
       </div>
     </div>
   </div>
