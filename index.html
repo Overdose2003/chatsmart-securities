@@ -205,7 +205,7 @@ ul { list-style: none; }
 
 /* ========== Business ========== */
 .business-section { background: #f8f9fb; }
-.business-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+.business-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1300px; margin: 0 auto; }
 .business-card {
   background: #fff; border-radius: 20px; padding: 48px 36px;
   text-align: center; transition: all 0.4s ease;
@@ -350,8 +350,11 @@ ul { list-style: none; }
 }
 
 /* ========== Mobile Nav ========== */
+@media (max-width: 1200px) {
+  .business-grid { grid-template-columns: repeat(2, 1fr); }
+}
 @media (max-width: 1024px) {
-  .business-grid, .news-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: repeat(2, 1fr); }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
   .timeline { overflow-x: auto; gap: 24px; justify-content: flex-start; }
@@ -503,7 +506,7 @@ ul { list-style: none; }
     <div class="tag">核心业务</div>
     <h2>业务介绍</h2>
     <div class="divider"></div>
-    <p>三大核心业务板块协同发展，为客户提供全方位、多层次的综合金融服务</p>
+    <p>四大核心业务板块协同发展，为客户提供全方位、多层次的综合金融服务</p>
   </div>
   <div class="business-grid">
     <div class="business-card" data-animate>
@@ -528,6 +531,18 @@ ul { list-style: none; }
         <li>家族信托与传承规划</li>
         <li>私募股权与另类投资</li>
         <li>智能投顾平台</li>
+      </ul>
+    </div>
+    <div class="business-card" data-animate>
+      <div class="business-icon">📈</div>
+      <h3>资产管理业务</h3>
+      <p>由全资子公司<strong>ChatSmart基金</strong>负责运营，依托强劲的投研实力和专业的投资团队，为投资者提供多元化的资产管理产品。</p>
+      <ul class="business-features">
+        <li>主动管理权益类产品</li>
+        <li>固定收益投资组合</li>
+        <li>多资产绝对收益策略</li>
+        <li>量化对冲基金</li>
+        <li>FOF/MOM 组合管理</li>
       </ul>
     </div>
     <div class="business-card" data-animate>
